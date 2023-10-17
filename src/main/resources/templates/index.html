@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang = "es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Empleados</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href= "../static/navbar.css" type="text/css" th:href="@{/navbar.css}">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <style>
+
+        .content-table{
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .content-table thead tr{
+            background-color: #419197;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+        .content-table th,
+        .content-table td{
+            padding: 12px 15px;
+        }
+        .content-table tbody tr{
+            border-bottom: 1px solid #dddddd;
+        }
+        .content-table tbody tr:nth-of-type(even){
+            background-color: #f3f3f3;
+        }
+        .content-table tbody tr:last-of-type{
+            border-bottom: 2px solid #419197;
+        }
+        .content-table tbody tr.active-row{
+            font-weight: bold;
+            color: #419197;
+        }
+        .header .btn button:hover{
+            background-color: #e2f1f8;
+            color: #6499E9;
+            transform: scale(1.1);
+        }
+        .header .btn-2 button {
+            margin-left: 20px;
+            font-weight: 700;
+            color: #12486B;
+            padding: 9px 25px;
+            background: #eceff1;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+        .header .btn-2 button:hover{
+            background-color: #e2f1f8;
+            color: #6499E9;
+            transform: scale(1.1);
+        }
+        h2{
+            font-size: 35px;
+            text-align:center;
+            line-height: 3;
+            margin-right: auto;
+            color: #000;
+            font-family: 'Calistoga', serif;
+        }
+
+        a {
+            color: #ffffff;
+        }
+
+        a:hover {
+            color: #78D6C6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <h1><a href="/">Top Education</a></h1>
+    </div>
+    <nav>
+    </nav>
+    <a class="btn" href="/"><button>Volver al menu principal</button></a>
+    <a class="btn-2" href="/estudiante/agregar-estudiante"><button>Ingresar nuevo Estudiante</button></a>
+</header>
+<div th:align = "center" class = "container my-2">
+    <h2> Listado de Estudiantes</h2>
+    <table th:border = "1" class = "content-table">
+        <thead>
+        <tr>
+            <th>Rut</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Tipo Colegio de Procedencia</th>
+            <th>Nombre Colegio</th>
+            <th>Año Egreso de Colegio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="estudiantes:${estudiantes}">
+            <td th:text="${estudiantes.rut}"></td>
+            <td th:text="${estudiantes.apellidos}"></td>
+            <td th:text="${estudiantes.nombres}"></td>
+            <td th:text="${estudiantes.fechanacimiento}"></td>
+            <td th:text="${estudiantes.tipoColegioP}"></td>
+            <td th:text="${estudiantes.nombreColegio}"></td>
+            <td th:text="${estudiantes.anioEgreso}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  postgres-db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql
+    environment:
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: topeducationbd
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+  app:
+    container_name: proyecto-docker
+    image: franciscamarquez/proyecto-docker
+    ports:
+      - "8090:8090"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/topeducationbd?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456789
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - postgres-db

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agregar Arancel</title>
+    <link  rel="stylesheet"
+           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+           crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href= "../static/navbar.css" type="text/css" th:href="@{/navbar.css}">
+    <style>
+        .mainclass{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 15px;
+        }
+        form {
+            border: 6px solid #f1f1f1;
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 16px 8px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #419197;
+            color: white;
+            padding: 14px 0;
+            margin: 10px 0;
+            border: none;
+            cursor: grabbing;
+            width: 100%;
+        }
+        h1 {
+            text-align:center;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .formcontainer {
+            text-align: left;
+            margin: 24px 50px 12px;
+        }
+        .container {
+            padding: 16px 0;
+            text-align:left;
+        }
+        span.psw {
+            float: right;
+            padding-top: 0;
+            padding-right: 15px;
+        }
+        /* Change styles for span on extra small screens */
+        .header{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 85px;
+            padding: 5px 10%;
+        }
+
+        .header .btn button{
+            margin-left: 20px;
+            font-weight: 700;
+            color: #12486B;
+            padding: 9px 25px;
+            background: #eceff1;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+        .header .btn button:hover{
+            background-color: #e2f1f8;
+            color: #ffbc0e;
+            transform: scale(1.1);
+        }
+
+        h2{
+            font-size: 35px;
+            line-height: 3;
+            text-align:center;
+            margin-right: auto;
+            color: #000;
+            font-family: 'Calistoga', serif;
+        }
+        a {
+            color: #ffffff;
+        }
+
+        a:hover {
+            color: #6499E9;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <h1><a href="/">Top Education</a></h1>
+    </div>
+    <nav>
+    </nav>
+    <a class="btn" href="/"><button>Volver al menu principal</button></a>
+</header>
+<div class = "mainclass">
+    <form  th:action="@{/arancel/agregar-arancel}" method="POST">
+        <h2>Registrar nuevo Arancel</h2>
+        <div class="formcontainer">
+            <hr/>
+            <div class="container">
+                <label><strong>Rut</strong></label>
+                <input type="text" id = "rutEstudiante"
+                       placeholder="Ingrese el rut del estudiante" name="rutEstudiante" required>
+                <label><strong>Monto Arancel</strong></label>
+                <input type="text" id = "monto"
+                       placeholder="Ingrese el monto del Arancel" name="monto" required>
+                <label><strong>Tipo de Pago</strong></label>
+                <input type="text" id = "tipoPago"
+                       placeholder="Ingrese el tipo de pago" name="tipoPago" required>
+                <label><strong>Cantidad de Cuotas</strong></label>
+                <input type="text" id = "cantidadCuotas"
+                       placeholder="Ingrese la cantidad de Cuotas" name="cantidadCuotas" required>
+            </div>
+            <button type="submit">Registrar Arancel</button>
+        </div>
+        <br>
+        <b> <h3 th:text="${mensaje}"></h3></b>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+            crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href= "../static/navbar.css" type="text/css" th:href="@{/navbar.css}">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+
+    <title>Cargar CSV Acopio</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 2%;
+        }
+        .f{
+            margin-top: 40px;
+            padding: 40px;
+            padding-top: 10px;
+            margin-left: 300px;
+            margin-right: 300px;
+        }
+        @media(max-width: 1200px){
+            .f{margin-left: 200px;
+                margin-right: 200px;}
+        }
+        .header{
+            background-color: #1b3038;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 85px;
+            padding: 5px 10%;
+        }
+
+        .header .btn button{
+            margin-left: 20px;
+            font-weight: 700;
+            color: #1b3039;
+            padding: 9px 25px;
+            background: #eceff1;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+        .header .btn button:hover{
+            background-color: #e2f1f8;
+            color: #6499E9;
+            transform: scale(1.1);
+        }
+        .header .btn-2 button {
+            margin-left: 20px;
+            font-weight: 700;
+            color: #1b3039;
+            padding: 9px 25px;
+            background: #eceff1;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+        .header .btn-2 button:hover{
+            background-color: #e2f1f8;
+            color: #6499E9;
+            transform: scale(1.1);
+        }
+
+        h2{
+            font-size: 40px;
+            line-height: 3;
+            text-align:center;
+            color: #000;
+            font-family: 'Calistoga', serif;
+        }
+
+        h3{
+            font-size: 25px;
+            line-height: 3;
+            text-align:center;
+            color: #D83F31;
+            font-family: 'Calistoga', serif;
+        }
+
+        h4{
+            font-size: 25px;
+            line-height: 3;
+            text-align:center;
+            color: darkslategrey;
+            font-family: 'Calistoga', serif;
+        }
+
+        .btn{
+            padding: 0.375rem 3rem;
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #78D6C6;
+        }
+
+        .btn-block {
+            display: block;
+            width: 80%;
+            border-radius: 0.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <h1><a href="/">Top Education</a></h1>
+    </div>
+    <nav>
+    </nav>
+    <a class="btn" href="/"><button>Volver al menu principal</button></a>
+</header>
+<div class = "f">
+    <div class="container">
+        <h2>Cargar el archivo de Resultados</h2>
+        <form th:action="@{/resultados/fileUpload}" method="POST" enctype="multipart/form-data">
+            <br>
+            <input type="file" class="form-control" name="file" accept = ".csv">
+            <br>
+            <input class = "btn btn-primary"
+                   type="submit" value="Cargar el archivo a la Base de Datos">
+        </form>
+        <br>
+        <b> <h4 th:text="${mensaje}"></h4></b>
+    </div>
+</div>
+<div>
+    <a class="btn" href="/resultados/dsctoPuntaje"><button type="button" class="btn btn-success btn-block" > Aplicar Descuentos </button></a>
+</div>
+
+<br>
+
+<hr>
+
+<div>
+    <h3>Recuerde que debe cargar un archivo Excel de extensión .csv</h3>
+</div>
+</body>
+</html>

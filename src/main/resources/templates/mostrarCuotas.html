@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang = "es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Cuotas</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href= "../static/navbar.css" type="text/css" th:href="@{/navbar.css}">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <style>
+
+        .content-table{
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .content-table thead tr{
+            background-color: #419197;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+        .content-table th,
+        .content-table td{
+            padding: 12px 15px;
+        }
+        .content-table tbody tr{
+            border-bottom: 1px solid #dddddd;
+        }
+        .content-table tbody tr:nth-of-type(even){
+            background-color: #f3f3f3;
+        }
+        .content-table tbody tr:last-of-type{
+            border-bottom: 2px solid #419197;
+        }
+        .content-table tbody tr.active-row{
+            font-weight: bold;
+            color: #419197;
+        }
+        .header .btn button:hover{
+            background-color: #e2f1f8;
+            color: #6499E9;
+            transform: scale(1.1);
+        }
+        .header .btn-2 button {
+            margin-left: 20px;
+            font-weight: 700;
+            color: #12486B;
+            padding: 9px 25px;
+            background: #eceff1;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+        .header .btn-2 button:hover{
+            background-color: #e2f1f8;
+            color: #6499E9;
+            transform: scale(1.1);
+        }
+        h2{
+            font-size: 35px;
+            text-align:center;
+            line-height: 3;
+            margin-right: auto;
+            color: #000;
+            font-family: 'Calistoga', serif;
+        }
+
+        .header .btn button {
+            background: #6499E9;
+            color: #fff;
+        }
+        a {
+            color: #ffffff;
+        }
+
+        a:hover {
+            color: #78D6C6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <h1><a href="/">Top Education</a></h1>
+    </div>
+    <nav>
+    </nav>
+    <a class="btn" href="/arancel/listar"><button>Volver al Arancel</button></a>
+    <a class="btn-2" href="/"><button>Volver al Menu Principal</button></a>
+</header>
+<div th:align = "center" class = "container my-2">
+
+    <h2> Listado de Cuotas</h2>
+    <table th:border = "1" class = "content-table">
+        <thead>
+        <tr>
+            <th>Rut</th>
+            <th>N° Cuota</th>
+            <th>Valor Cuota</th>
+            <th>Fecha Vencimiento</th>
+            <th>Fecha Pago</th>
+            <th>Estado</th>
+            <th>Realizar Pago</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cuotas:${cuotas}">
+            <td th:text="${cuotas.rutEstudiante}"></td>
+            <td th:text="${cuotas.nroCuota}"></td>
+            <td th:text="${cuotas.valorCuota}"></td>
+            <td th:text="${cuotas.fechaVencimiento}"></td>
+            <td th:text="${cuotas.fechaPago}"></td>
+            <td th:text="${cuotas.estado}"></td>
+            <td>
+
+                <form method="post" action="/cuotas/pagarCuota">
+                    <input type="hidden" name="ID" th:value="${cuotas.ID}" />
+                    <input type="hidden" name="rutEstudiante" th:value="${cuotas.rutEstudiante}" />
+                    <button type="submit" class="btn btn-success">Pagar</button>
+                </form>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
