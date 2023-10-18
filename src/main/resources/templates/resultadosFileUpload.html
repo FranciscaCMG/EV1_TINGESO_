@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
 
-    <title>Cargar CSV Acopio</title>
+    <title>Cargar CSV Estudiantes</title>
     <style>
         .container{
             display: flex;
@@ -123,11 +123,16 @@
 
         .btn-block {
             display: block;
-            width: 80%;
+            width: 100%;
             border-radius: 0.5rem;
             margin-left: auto;
             margin-right: auto;
         }
+
+        .descuento{
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -153,7 +158,7 @@
         <b> <h4 th:text="${mensaje}"></h4></b>
     </div>
 </div>
-<div>
+<div class="descuento">
     <a class="btn" href="/resultados/dsctoPuntaje"><button type="button" class="btn btn-success btn-block" > Aplicar Descuentos </button></a>
 </div>
 
