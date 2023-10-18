@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage("Build JAR File") {
             steps {
+                checkout scmGit(branches: [[name: '*/*']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/FranciscaCMG/EV1_TINGESO_']])
                 sh "mvn clean install"
             }
         }
@@ -21,7 +22,7 @@ pipeline {
         }
         stage("Push Docker Image") {
             steps {
-            withCredentials([string(credentialsId: 'dckrhubpassword', variable: 'dckpass')]) {
+                withCredentials([string(credentialsId: 'dckrhubpassword', variable: 'dckpass')]) {
                     sh "docker login -u franciscamarquez -p ${dckpass}"
                 }
                 sh "docker push franciscamarquez/proyecto-docker"
