@@ -22,7 +22,7 @@ pipeline {
         }
         stage("Push Docker Image") {
             steps {
-                withCredentials([string(credentialsId: 'dckrhubpassword', variable: 'dckpass')]) {
+                withCredentials([string(credentialsId: 'dckhubpassword', variable: 'dckpass')]) {
                     sh "docker login -u franciscamarquez -p ${dckpass}"
                 }
                 sh "docker push franciscamarquez/proyecto-docker"
